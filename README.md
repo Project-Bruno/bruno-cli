@@ -28,26 +28,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`bruno hello`](#bruno-hello)
 * [`bruno help [COMMAND]`](#bruno-help-command)
-
-## `bruno hello`
-
-Describe the command here
-
-```
-USAGE
-  $ bruno hello
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/hello.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/hello.js)_
+* [`bruno init`](#bruno-init)
+* [`bruno track`](#bruno-track)
 
 ## `bruno help [COMMAND]`
 
@@ -65,4 +48,36 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1/src/commands/help.ts)_
+
+## `bruno init`
+
+Initializes a Bruno project.
+
+```
+USAGE
+  $ bruno init
+
+OPTIONS
+  -n, --name=name  Name of new project
+```
+
+_See code: [src/commands/init.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/init.js)_
+
+## `bruno track`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno track
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/track.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/track.js)_
 <!-- commandsstop -->
