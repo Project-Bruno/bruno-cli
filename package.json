@@ -1,8 +1,8 @@
 {
   "name": "bruno-cli",
-  "description": "A command line interface for Bruno projects",
+  "description": "A command line interface for Bruno projects.",
   "version": "0.0.0",
-  "author": " @justws95",
+  "author": "Justin Sumner @justws95",
   "bin": {
     "bruno": "./bin/run"
   },
