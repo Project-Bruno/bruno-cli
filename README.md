@@ -51,14 +51,18 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1
 
 ## `bruno init`
 
-Initializes a Bruno project.
+Describe the command here
 
 ```
 USAGE
   $ bruno init
 
 OPTIONS
-  -n, --name=name  Name of new project
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
 ```
 
 _See code: [src/commands/init.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/init.js)_
