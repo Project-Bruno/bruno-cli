@@ -9,19 +9,18 @@ const endOfLine = require('os').EOL;
 
 class InitCommand extends Command {
   async run() {
-    const path = './bruno.yaml';
+    const path = './bruno.yml';
 
     // See if this is already a Bruno tracked project
     try {
       if (fs.existsSync(path)) {
-        // bruno.yaml file exists
+        // bruno.yml file exists
         console.log("Error: This is already a bruno tracked repository");
         return;
       }
     } catch(err) {
       console.error(err);
     }
-
 
     // Set up a new project
     let newProject = {
@@ -59,10 +58,10 @@ class InitCommand extends Command {
         break;
     }
 
-
+    // Prompt the user for inputs
     const promptParams = [
       {
-        name: 'projectName',
+        name: 'project_name',
         description: 'project name: ',
         type: 'string',
         required: true,
@@ -78,15 +77,22 @@ class InitCommand extends Command {
         default: `${newProject['compiler']}`
       },
       {
-        name: 'buildSystem',
+        name: 'build_system',
         description: 'build system: ',
         type: 'string',
         required: true,
         default: `${newProject['build_system']}`
       },
       {
+        name: 'language_standard',
+        description: 'language standard: ',
+        type: 'string',
+        required: true,
+        default: `${newProject['language_standard']}`
+      },
+      {
         name: 'isOk',
-        description: (endOfLine + `${newProject.toString()}` +  endOfLine + "Is this ok?:"), //TODO: Doesnt actually print
+        description: (endOfLine + `${newProject.toString()}` +  endOfLine + "Is this ok?:"), //TODO: Doesnt actually print obj
         type: 'string',
         required: true,
         validator: /^[a-zA-Z\s\-]+$/, // TODO: Change validator
@@ -105,16 +111,23 @@ class InitCommand extends Command {
           return;
         }
 
-        // TODO: Shorten (add fuzzy logic?)
+        // TODO: Shorten if possible
         if (result.isOk === 'n' || result.isOk === 'no' || result.isOk === 'N' || result.isOk === 'No') {
           console.log(colors.red("Aborted"));
           return;
         }
-        else {
-          let yamlStr = yaml.safeDump(newProject);
-          fs.writeFileSync('./bruno.yaml', yamlStr, 'utf8');
-          console.log(colors.green(`Initialized new Bruno repository in ${path}`));
+
+        for (const [key, value] of Object.entries(result)) {
+          if (key === 'isOk') {
+            continue;
+          }
+
+          newProject[key] = value;
         }
+
+        let yamlStr = yaml.safeDump(newProject);
+        fs.writeFileSync('./bruno.yml', yamlStr, 'utf8');
+        console.log(colors.green(`Initialized new Bruno repository in ${path}`));
     });
   }
 }

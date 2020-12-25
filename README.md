@@ -7,6 +7,7 @@ A command line interface for Bruno projects
 [![Version](https://img.shields.io/npm/v/bruno-cli.svg)](https://npmjs.org/package/bruno-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/bruno-cli.svg)](https://npmjs.org/package/bruno-cli)
 [![License](https://img.shields.io/npm/l/bruno-cli.svg)](https://github.com/justws95/bruno-cli/blob/master/package.json)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -28,9 +29,62 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`bruno add`](#bruno-add)
+* [`bruno audit`](#bruno-audit)
+* [`bruno generate`](#bruno-generate)
 * [`bruno help [COMMAND]`](#bruno-help-command)
 * [`bruno init`](#bruno-init)
 * [`bruno track`](#bruno-track)
+
+## `bruno add`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno add
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/add.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/add.js)_
+
+## `bruno audit`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno audit
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/audit.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/audit.js)_
+
+## `bruno generate`
+
+Generate a build file
+
+```
+USAGE
+  $ bruno generate
+
+OPTIONS
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/generate.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/generate.js)_
 
 ## `bruno help [COMMAND]`
 
@@ -51,18 +105,11 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1
 
 ## `bruno init`
 
-Describe the command here
+Initialize a new Bruno project.
 
 ```
 USAGE
   $ bruno init
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
 ```
 
 _See code: [src/commands/init.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/init.js)_
