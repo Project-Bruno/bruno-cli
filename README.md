@@ -4,10 +4,10 @@ bruno-cli
 A command line interface for Bruno projects
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8bfba664e7feb2821a9e/maintainability)](https://codeclimate.com/github/justws95/bruno-cli/maintainability)
 [![Version](https://img.shields.io/npm/v/bruno-cli.svg)](https://npmjs.org/package/bruno-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/bruno-cli.svg)](https://npmjs.org/package/bruno-cli)
-[![License](https://img.shields.io/npm/l/bruno-cli.svg)](https://github.com/justws95/bruno-cli/blob/master/package.json)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8bfba664e7feb2821a9e/maintainability)](https://codeclimate.com/github/justws95/bruno-cli/maintainability)
+
 
 <!-- toc -->
 * [Usage](#usage)

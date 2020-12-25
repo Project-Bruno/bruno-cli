@@ -5,6 +5,7 @@ const os = require('os');
 const prompt = require('prompt');
 const colors = require("colors/safe");
 const endOfLine = require('os').EOL;
+const brunoUtils = require('./../common/utils');
 
 
 class InitCommand extends Command {
@@ -12,14 +13,9 @@ class InitCommand extends Command {
     const path = './bruno.yml';
 
     // See if this is already a Bruno tracked project
-    try {
-      if (fs.existsSync(path)) {
-        // bruno.yml file exists
-        console.log("Error: This is already a bruno tracked repository");
-        return;
-      }
-    } catch(err) {
-      console.error(err);
+    if (brunoUtils.is_bruno_repo()) {
+      console.log("Error: This is already a bruno tracked repository");
+      return;
     }
 
     // Set up a new project
