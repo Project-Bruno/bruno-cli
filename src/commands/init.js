@@ -12,24 +12,17 @@ class InitCommand extends Command {
   async run() {
     const path = './bruno.yml';
 
-    // See if this is already a Bruno tracked project
     if (brunoUtils.is_bruno_repo()) {
+      //TODO: Add better error message
       console.log("Error: This is already a bruno tracked repository");
       return;
     }
 
-    // Set up a new project
     let newProject = {
       project_name: 'my-bruno-project',
       compiler: '',
       build_system: 'make',
       language_standard: 'latest',
-      exec_format: '',
-      is_lib: {
-        static: false,
-        shared_objects: false,
-        dll: false
-      },
       tracked_files: [],
       project_dependancies: {},
       binaries: {}
@@ -54,7 +47,6 @@ class InitCommand extends Command {
         break;
     }
 
-    // Prompt the user for inputs
     const promptParams = [
       {
         name: 'project_name',
