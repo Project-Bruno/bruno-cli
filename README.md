@@ -4,9 +4,10 @@ bruno-cli
 A command line interface for Bruno projects
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8bfba664e7feb2821a9e/maintainability)](https://codeclimate.com/github/justws95/bruno-cli/maintainability)
 [![Version](https://img.shields.io/npm/v/bruno-cli.svg)](https://npmjs.org/package/bruno-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/bruno-cli.svg)](https://npmjs.org/package/bruno-cli)
-[![License](https://img.shields.io/npm/l/bruno-cli.svg)](https://github.com/justws95/bruno-cli/blob/master/package.json)
+
 
 <!-- toc -->
 * [Usage](#usage)
@@ -28,16 +29,21 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`bruno hello`](#bruno-hello)
+* [`bruno audit`](#bruno-audit)
+* [`bruno build`](#bruno-build)
+* [`bruno generate`](#bruno-generate)
 * [`bruno help [COMMAND]`](#bruno-help-command)
+* [`bruno init`](#bruno-init)
+* [`bruno prune`](#bruno-prune)
+* [`bruno test`](#bruno-test)
 
-## `bruno hello`
+## `bruno audit`
 
 Describe the command here
 
 ```
 USAGE
-  $ bruno hello
+  $ bruno audit
 
 OPTIONS
   -n, --name=name  name to print
@@ -47,7 +53,39 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/hello.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/hello.js)_
+_See code: [src/commands/audit.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/audit.js)_
+
+## `bruno build`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno build
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/build.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/build.js)_
+
+## `bruno generate`
+
+Generate a build file
+
+```
+USAGE
+  $ bruno generate
+
+OPTIONS
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/generate.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/generate.js)_
 
 ## `bruno help [COMMAND]`
 
@@ -65,4 +103,51 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1/src/commands/help.ts)_
+
+## `bruno init`
+
+Initialize a new Bruno project.
+
+```
+USAGE
+  $ bruno init
+```
+
+_See code: [src/commands/init.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/init.js)_
+
+## `bruno prune`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno prune
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/prune.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/prune.js)_
+
+## `bruno test`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno test
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/test.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/test.js)_
 <!-- commandsstop -->
