@@ -29,30 +29,13 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`bruno add`](#bruno-add)
 * [`bruno audit`](#bruno-audit)
+* [`bruno build`](#bruno-build)
 * [`bruno generate`](#bruno-generate)
 * [`bruno help [COMMAND]`](#bruno-help-command)
 * [`bruno init`](#bruno-init)
-* [`bruno track`](#bruno-track)
-
-## `bruno add`
-
-Describe the command here
-
-```
-USAGE
-  $ bruno add
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/add.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/add.js)_
+* [`bruno prune`](#bruno-prune)
+* [`bruno test`](#bruno-test)
 
 ## `bruno audit`
 
@@ -71,6 +54,24 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/audit.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/audit.js)_
+
+## `bruno build`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno build
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/build.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/build.js)_
 
 ## `bruno generate`
 
@@ -114,13 +115,13 @@ USAGE
 
 _See code: [src/commands/init.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/init.js)_
 
-## `bruno track`
+## `bruno prune`
 
 Describe the command here
 
 ```
 USAGE
-  $ bruno track
+  $ bruno prune
 
 OPTIONS
   -n, --name=name  name to print
@@ -130,5 +131,23 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/track.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/track.js)_
+_See code: [src/commands/prune.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/prune.js)_
+
+## `bruno test`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno test
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/test.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/test.js)_
 <!-- commandsstop -->
