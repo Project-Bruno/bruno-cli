@@ -1,0 +1,17 @@
+project_name: test
+compiler: g++
+build_system: make
+language_standard: C++11/C++0x
+project_structure:
+  build_dir: build
+  include_dir: include
+  source_dir: src
+  test_dir: tests
+  examples_dir: examples
+  external_dir: external
+  data_dir: data
+  tools_dir: tools
+  documentation_dir: docs
+  libs_dir: libs
+  extras_dir: extras
+buildSystem: make
