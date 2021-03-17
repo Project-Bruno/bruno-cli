@@ -7,6 +7,7 @@ const figlet = require('figlet');
 const chalk = require('chalk');
 // const endOfLine = require('os').EOL;
 const brunoUtils = require('./../common/utils');
+const EXIT_CODES = require('./../common/exit-codes');
 
 class InitCommand extends Command {
   async run() {
@@ -16,7 +17,7 @@ class InitCommand extends Command {
     if (!flags.force) {
       if (brunoUtils.is_bruno_repo()) {
         console.log(chalk.redBright('Error: This is already a bruno tracked repository'));
-        return;
+        return EXIT_CODES.BRUNO_DUPLICATE_INIT_ERROR;
       }
     }
 
@@ -39,6 +40,8 @@ class InitCommand extends Command {
       build_system: 'make',
       language_standard: 'latest',
       project_structure: {
+        root_dir: '.',
+        main: '',
         build_dir: 'build',
         include_dir: 'include',
         source_dir: 'src',
@@ -57,6 +60,7 @@ class InitCommand extends Command {
       },
     };
 
+    // Determine platform specific defaults
     switch (os.platform()) {
     case 'linux':
       BRUNO_PROJ.compiler = 'gcc';
@@ -76,6 +80,7 @@ class InitCommand extends Command {
       break;
     }
 
+    // Declare questions for prompting
     const questions = [
       {
         name: 'project_name',
@@ -163,6 +168,9 @@ class InitCommand extends Command {
           BRUNO_PROJ[key] = answers[key];
         }
       }
+
+      // Specify the entrypoint file name NOTE: This is kinda hacky
+      BRUNO_PROJ.project_structure.main = `${BRUNO_PROJ.project_name}.cpp`;
     })
     .catch(error => {
       if (error.isTtyError) {
@@ -170,15 +178,19 @@ class InitCommand extends Command {
       } else {
         // Something else went wrong
       }
+
+      return EXIT_CODES.UNSPECIFIED_BAD_EXIT;
     })
     .finally(() => {
       fs.writeFileSync('./bruno.yml', yaml.safeDump(BRUNO_PROJ), 'utf8');
       console.log(chalk.magenta(`Initialized new Bruno project at ${BRUNO_PATH}`));
     });
+
+    return EXIT_CODES.GOOD_EXIT;
   }
 }
 
-InitCommand.description = 'Initialize a new Bruno project.';
+InitCommand.description = 'initialize a new Bruno project';
 
 InitCommand.flags = {
   force: flags.boolean({char: 'f', description: 'Overwrite existing bruno file.'}),

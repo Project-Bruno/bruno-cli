@@ -1,16 +1,27 @@
+/*
+  IDEA: COnsider creating a utils directory where each function in this file
+  is split off into its own file. Could be better for maintainability.
+*/
+
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
+// const os = require('os');
 const yaml = require('js-yaml');
 
+/*
+  Searches up the directory tree, up to root, to check
+  if a bruno.yml file is present.
 
-exports.is_bruno_repo = function(return_path=false) {
+  NOTE: Consider allowing nested bruno projects which
+  'export' their interface to higher-nested modules.
+*/
+exports.is_bruno_repo = (return_path = false) => {
   let cwd = __dirname;
   let bruno_file_found = false;
   let root = path.parse(cwd).root;
   let brunoFile = '';
 
-  while (cwd != root) {
+  while (cwd !== root) {
     brunoFile = cwd + path.sep + 'bruno.yml';
 
     try {
@@ -20,26 +31,43 @@ exports.is_bruno_repo = function(return_path=false) {
       } else {
         cwd = path.dirname(cwd);
       }
-    } catch(err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   }
 
   return return_path ? brunoFile : bruno_file_found;
-}
+};
 
+exports.read_bruno_file = () => {
+  /*
+    TODO: Better error handiling for file IO
+  */
+  const bruno_path = this.is_bruno_repo(true);
 
-exports.read_bruno_file = function() {
+  console.log('Path for bruno file found at ', bruno_path);
 
-  let bruno_path = this.is_bruno_repo(return_path=true);
-
-  console.log("Path for bruno file found at ", bruno_path);
+  let data = null;
 
   try {
-    let fileContents = fs.readFileSync(bruno_path, 'utf8');
-    let data = yaml.safeLoad(fileContents);
-    console.log(data);
-  } catch (e) {
-      console.log(e);
+    data = yaml.safeLoad(fs.readFileSync(bruno_path, 'utf8'));
+  } catch (error) {
+    console.log(error);
   }
-}
+
+  return data;
+};
+
+exports.project_dir_exists = (BRUNO_FILE, dir_name) => {
+  let check_dir = BRUNO_FILE.root + path.sep + dir_name;
+
+  try {
+    if (fs.existsSync(check_dir)) {
+      return true;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+  return false;
+};

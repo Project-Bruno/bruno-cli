@@ -3,6 +3,6 @@
   "rules": {
     "semi": [2, "always"],
     "no-console": "off",
-    "camelcase": [2, {"properties": "never"}]
+    "camelcase": "off"
   }
 }
