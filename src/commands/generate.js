@@ -20,7 +20,7 @@ class GenerateCommand extends Command {
     // Declare questions for prompting
     const questions = [
       {
-        name: 'item',
+        name: 'new-item',
         type: 'list',
         choices: [
           'Class',
@@ -34,14 +34,41 @@ class GenerateCommand extends Command {
         type: 'input',
         message: 'Item name: ',
       },
+      /*
+        // TODO: impeliment the ability to add to a specific namespace
       {
         name: 'add-namespace',
         type: 'confirm',
         message: 'Add to a namespace?',
       },
+      */
     ];
 
-    inquirer.prompt(questions);
+    inquirer.prompt(questions)
+    .then(answers => {
+      // Determine which new files need to be created
+      let new_files = [];
+
+      switch (answers['new-item']) {
+      case 'Class':
+        new_files.push(`${answers.name}.h`);
+        new_files.push(`${answers.name}.cpp`);
+        break;
+      case 'Header File':
+        new_files.push(`${answers.name}.h`);
+        break;
+      case 'Source File':
+        new_files.push(`${answers.name}.cpp`);
+        break;
+      default:
+        // This state should NEVER be reached under normal operation
+        console.log(chalk.redBright('Internal Error: Unspecifiend selection given to bruno generate. Exiting....'));
+        break;
+      }
+
+      // Test to see if the containing directory needs to be created
+      
+    });
   }
 }
 
