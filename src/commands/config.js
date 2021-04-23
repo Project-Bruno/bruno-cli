@@ -16,7 +16,7 @@ class ConfigCommand extends Command {
       }
       else{
         body[args.arg1] = args.arg2
-        this.log('Configuration setting ' + args.arg1 + ' changed to ' + args.arg2)
+        this.log('Configuration setting ' + args.arg1 + ' updated to ' + args.arg2)
       }
       fs.writeFileSync('config.json', JSON.stringify(body));
     }
