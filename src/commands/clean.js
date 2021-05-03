@@ -37,11 +37,9 @@ class CleanCommand extends Command {
     }
 
     // Launch make clean as a child process
-    const clean_proc = spawn('make');
-
-    clean_proc.stdout.on('data', data => {
-      console.log('\n\n\nI am here\n\n');
-      console.log(`child stdout:\n${data.toString('utf8')}`);
+    const clean_proc = spawn('make clean', {
+      stdio: 'inherit',
+      shell: true,
     });
   }
 }
