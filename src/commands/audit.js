@@ -37,7 +37,7 @@ class AuditCommand extends Command {
       console.log(e);
     }
     
-    dependencies = data.dependencies;
+    dependencies = data.projectDependencies;
     console.log(dependencies);
   }
 }
