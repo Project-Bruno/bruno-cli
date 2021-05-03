@@ -39,7 +39,7 @@ USAGE
 
 ## `bruno audit`
 
-Runs a vulnerability check on dependencies specified in yml file created by init command.
+Run vulnerability check on dependencies specified in yml file created by init command.
 
 ```
 USAGE
