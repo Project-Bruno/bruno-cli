@@ -47,10 +47,6 @@ USAGE
 
 OPTIONS
   -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
 ```
 
 _See code: [src/commands/audit.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/audit.js)_
