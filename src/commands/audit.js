@@ -7,9 +7,17 @@ class AuditCommand extends Command {
     //this.log(`hello ${name}`)
     const fs = require('fs');
     const yaml = require('js-yaml');
+    const { exec } = require("child_process");
     var ymlfiles = new Array();
     var data;
     var dependencies;
+    var depLength;
+    var execStarter;
+
+    if (pathname == null) {
+      console.log("usage: bruno audit -p path/to/dependencies/");
+      return;
+    }
 
     let dirname = '../bin';
     console.log("Searching bin for yaml files...");
@@ -32,14 +40,32 @@ class AuditCommand extends Command {
       let fileContents = fs.readFileSync(fullpath, 'utf8');
       data = yaml.safeLoad(fileContents);
 
-      console.log(data);
+      //console.log(data);
     } catch (e) {
       console.log(e);
     }
     
     dependencies = data.projectDependencies;
-    console.log(dependencies);
-    
+    console.log('Dependencies found: ' + dependencies);
+    depLength = dependencies.length;
+    execStarter = "cd ../src/flawfinder-2.0.15/; ./flawfinder ";
+    for (var i = 0; i < depLength; i++) {
+      if (pathname.substring(0, 1) != "./") pathname = "./" + pathname;
+      if (pathname.slice(-1) != '/') pathname = pathname + '/';
+      
+      var execString = execStarter + pathname + dependencies[i];
+      //var execString = execStarter + './test/test-cpp-digit-separator.cpp';
+      exec(execString, (error, stdout, stderr) => {
+	if (error) {
+	  console.log('error: ' + error.message);
+	  return;
+	}
+	if (stderr) {
+	  console.log('stderr: ' + stderr);
+	}
+	console.log(stdout);
+      });
+    }
   }
 }
 
