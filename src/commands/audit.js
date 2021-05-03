@@ -2,9 +2,9 @@ const {Command, flags} = require('@oclif/command')
 
 class AuditCommand extends Command {
   async run() {
-    const {flags} = this.parse(AuditCommand)
-    const name = flags.name || 'world'
-    this.log(`hello ${name}`)
+    //const {flags} = this.parse(AuditCommand)
+    //const name = flags.name || 'world'
+    //this.log(`hello ${name}`)
     const fs = require('fs');
     const yaml = require('js-yaml');
     var ymlfiles = new Array();
