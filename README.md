@@ -39,7 +39,7 @@ USAGE
 
 ## `bruno audit`
 
-Describe the command here
+Runs a vulnerability check on dependencies specified in yml file created by init command.
 
 ```
 USAGE
@@ -47,10 +47,6 @@ USAGE
 
 OPTIONS
   -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
 ```
 
 _See code: [src/commands/audit.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/audit.js)_
