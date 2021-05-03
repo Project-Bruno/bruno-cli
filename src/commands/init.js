@@ -5,7 +5,6 @@ const os = require('os');
 const inquirer = require('inquirer');
 const figlet = require('figlet');
 const chalk = require('chalk');
-// const endOfLine = require('os').EOL;
 const brunoUtils = require('./../common/utils');
 const EXIT_CODES = require('./../common/exit-codes');
 
@@ -31,7 +30,7 @@ class InitCommand extends Command {
     const BRUNO_PATH = './bruno.yml';
 
     /*
-      Create a new project using The Pitchfork Layout (PFL) for file structure. 
+      Create a new project using The Pitchfork Layout (PFL) for file structure.
       Reference: https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs
     */
     let BRUNO_PROJ = {
@@ -44,7 +43,7 @@ class InitCommand extends Command {
         main: '',
         build_dir: 'build',
         include_dir: 'include',
-        source_dir: 'src',
+        source_dir: 'source',
         test_dir: 'tests',
         examples_dir: 'examples',
         external_dir: 'external',
@@ -118,6 +117,7 @@ class InitCommand extends Command {
       {
         name: 'pitchfork',
         type: 'confirm',
+        default: 'Y',
         message: `Use The Pitchfork Layout (PFL) project structure? ${chalk.yellow('Recomended for larger projects.')}`,
       },
     ];

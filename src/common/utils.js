@@ -59,10 +59,12 @@ exports.read_bruno_file = () => {
 };
 
 exports.project_dir_exists = (BRUNO_FILE, dir_name) => {
-  let check_dir = BRUNO_FILE.root + path.sep + dir_name;
+  let check_dir = BRUNO_FILE.project_structure.root_dir + path.sep + dir_name;
+
+  console.log("Checking to see if this directory exists: ", check_dir);
 
   try {
-    if (fs.existsSync(check_dir)) {
+    if (fs.existsSync(path.resolve(check_dir))) {
       return true;
     }
   } catch (error) {
