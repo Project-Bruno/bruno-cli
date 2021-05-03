@@ -14,12 +14,13 @@
     "chalk": "^4.1.0",
     "figlet": "^1.5.0",
     "js-yaml": "^3.14.1",
-    "prompt": "^1.1.0"
+    "prompt": "^1.1.0",
+    "snyk-cpp-plugin": "^2.2.1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
-    "chai": "^4.2.0",
+    "chai": "^4.3.4",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "globby": "^10.0.2",
