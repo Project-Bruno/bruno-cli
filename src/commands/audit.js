@@ -60,7 +60,6 @@ class AuditCommand extends Command {
 	  console.log('stderr: ' + stderr);
 	}
 	console.log(stdout);
-	if (i != depLength - 1) console.log("-------------------------------------------------------------------------");
       });
     }
   }
