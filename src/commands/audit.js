@@ -2,8 +2,8 @@ const {Command, flags} = require('@oclif/command')
 
 class AuditCommand extends Command {
   async run() {
-    //const {flags} = this.parse(AuditCommand)
-    //const name = flags.name || 'world'
+    const {flags} = this.parse(AuditCommand)
+    const pathname = flags.pathname;
     //this.log(`hello ${name}`)
     const fs = require('fs');
     const yaml = require('js-yaml');
@@ -39,13 +39,14 @@ class AuditCommand extends Command {
     
     dependencies = data.projectDependencies;
     console.log(dependencies);
+    
   }
 }
 
 AuditCommand.description = `Run vulnerability check on dependencies specified in yml file created by init command.`
 
 AuditCommand.flags = {
-  name: flags.string({char: 'n', description: 'name to print'}),
+  pathname: flags.string({char: 'p', description: 'path to dependencies'}),
 }
 
 module.exports = AuditCommand
