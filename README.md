@@ -31,11 +31,11 @@ USAGE
 <!-- commands -->
 * [`bruno audit`](#bruno-audit)
 * [`bruno build`](#bruno-build)
+* [`bruno config ARG1 ARG2`](#bruno-config-arg1-arg2)
 * [`bruno generate`](#bruno-generate)
 * [`bruno help [COMMAND]`](#bruno-help-command)
 * [`bruno init`](#bruno-init)
-* [`bruno prune`](#bruno-prune)
-* [`bruno test`](#bruno-test)
+* [`bruno track`](#bruno-track)
 
 ## `bruno audit`
 
@@ -73,16 +73,28 @@ DESCRIPTION
 
 _See code: [src/commands/build.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/build.js)_
 
+## `bruno config ARG1 ARG2`
+
+Alter configuration of Bruno
+
+```
+USAGE
+  $ bruno config ARG1 ARG2
+
+OPTIONS
+  -e, --edit=edit  edit config file
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/config.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/config.js)_
+
 ## `bruno generate`
 
-Generate a build file
+generates project files based on a schematic
 
 ```
 USAGE
   $ bruno generate
-
-OPTIONS
-  -n, --name=name  name to print
 ```
 
 _See code: [src/commands/generate.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/generate.js)_
@@ -106,22 +118,25 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1
 
 ## `bruno init`
 
-Initialize a new Bruno project.
+initialize a new Bruno project
 
 ```
 USAGE
   $ bruno init
+
+OPTIONS
+  -f, --force  Overwrite existing bruno file.
 ```
 
 _See code: [src/commands/init.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/init.js)_
 
-## `bruno prune`
+## `bruno track`
 
 Describe the command here
 
 ```
 USAGE
-  $ bruno prune
+  $ bruno track
 
 OPTIONS
   -n, --name=name  name to print
@@ -131,23 +146,5 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/prune.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/prune.js)_
-
-## `bruno test`
-
-Describe the command here
-
-```
-USAGE
-  $ bruno test
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/test.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/test.js)_
+_See code: [src/commands/track.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/track.js)_
 <!-- commandsstop -->

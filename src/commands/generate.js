@@ -38,6 +38,21 @@ class GenerateCommand extends Command {
 
     let needs_exit = false;
 
+    // Read in the bruno yaml file
+    let brunoFile = null;
+
+    try {
+      let fileContents = fs.readFileSync('./bruno.yml', 'utf8');
+      brunoFile = yaml.safeLoad(fileContents);
+    } catch (error) {
+      console.log(error);
+      return EXIT_CODES.UNSPECIFIED_BAD_EXIT;
+    }
+
+    if (brunoFile === null) {
+      return EXIT_CODES.COULD_NOT_LOAD_BRUNO_PROJ;
+    }
+
     inquirer.prompt(questions)
     .then(answers => {
       // Determine which new files need to be created
@@ -65,21 +80,6 @@ class GenerateCommand extends Command {
         return EXIT_CODES.UNSPECIFIED_BAD_EXIT;
       }
 
-      // Read in the bruno yaml file
-      let brunoFile = null;
-
-      try {
-        let fileContents = fs.readFileSync('./bruno.yml', 'utf8');
-        brunoFile = yaml.safeLoad(fileContents);
-      } catch (error) {
-        console.log(error);
-        return EXIT_CODES.UNSPECIFIED_BAD_EXIT;
-      }
-
-      if (brunoFile === null) {
-        return EXIT_CODES.COULD_NOT_LOAD_BRUNO_PROJ;
-      }
-
       // Create the files and any containing directories
       for (var i = 0; i < new_files.length; i++) {
         let file = new_files[i];
@@ -102,6 +102,9 @@ class GenerateCommand extends Command {
               return console.log(error);
             }
           });
+
+          // Add file to project tracked files
+          brunoFile.project_files.header.push(header_file);
         }
 
         if (file.includes('.cpp')) {
@@ -114,22 +117,29 @@ class GenerateCommand extends Command {
           }
 
           // Write the header file template to the new file
-          let header_file = source_dir + path.sep + file;
-          let header_contents = brunoTemplates.get_header_file(file);
+          let source_file = source_dir + path.sep + file;
+          let source_contents = brunoTemplates.get_header_file(file);
 
-          fs.writeFile(header_file, header_contents, error => {
+          fs.writeFile(source_file, source_contents, error => {
             if (error) {
               return console.log(error);
             }
           });
+
+          // Add file to project tracked files
+          brunoFile.project_files.source.push(source_file);
         }
       }
+
+      // Update the bruno project file with the changes
+      fs.writeFileSync('./bruno.yml', yaml.safeDump(brunoFile), 'utf8');
+      console.log(chalk.magenta('Bruno project has been updated!'));
     });
 
     return EXIT_CODES.GOOD_EXIT;
   }
 }
 
-GenerateCommand.description = 'generates project files based on a schematic';
+GenerateCommand.description = 'Generates project files based on a schematic';
 
 module.exports = GenerateCommand;

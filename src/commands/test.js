@@ -1,7 +1,8 @@
 const {Command} = require('@oclif/command')
 const brunoUtils = require('./../common/utils');
-var exec  = require('child_process').exec, child;
+const fs = require('fs');
 const yaml = require('js-yaml');
+const exec  = require('child_process').exec, child;
 
 class TestCommand extends Command {
   async run() {
@@ -39,8 +40,8 @@ class TestCommand extends Command {
           }
       });
 
-    } catch (e) {
-        console.log(e);
+    } catch (error) {
+        console.log(error);
     }
   }
 }
@@ -51,6 +52,6 @@ if the current project is a Bruno project or not. Then, test will attempt to loc
 the current project's build file. If it is found, then test will attempt to exectute the 
 makefile. Finally, test will return any error messages or console messages that occured from
 running the build file.
-`
+`;
 
-module.exports = TestCommand
+module.exports = TestCommand;

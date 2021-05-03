@@ -53,6 +53,10 @@ class InitCommand extends Command {
         libs_dir: 'libs',
         extras_dir: 'extras',
       },
+      project_files: {
+        source: [],
+        header: [],
+      },
       compiler_flags: {
         debug: [],
         production: [],
@@ -173,12 +177,7 @@ class InitCommand extends Command {
       BRUNO_PROJ.project_structure.main = `${BRUNO_PROJ.project_name}.cpp`;
     })
     .catch(error => {
-      if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
-      } else {
-        // Something else went wrong
-      }
-
+      console.log(error);
       return EXIT_CODES.UNSPECIFIED_BAD_EXIT;
     })
     .finally(() => {
@@ -190,7 +189,7 @@ class InitCommand extends Command {
   }
 }
 
-InitCommand.description = 'initialize a new Bruno project';
+InitCommand.description = 'Initialize a new Bruno project';
 
 InitCommand.flags = {
   force: flags.boolean({char: 'f', description: 'Overwrite existing bruno file.'}),
