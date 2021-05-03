@@ -31,7 +31,7 @@ class InitCommand extends Command {
       buildSystem: 'make',
       languageStandard: 'latest',
       trackedFiles: [],
-      projectDependancies: {},
+      projectDependencies: {},
       binaries: {},
     };
 
