@@ -31,6 +31,7 @@ USAGE
 <!-- commands -->
 * [`bruno audit`](#bruno-audit)
 * [`bruno build`](#bruno-build)
+* [`bruno clean`](#bruno-clean)
 * [`bruno config ARG1 ARG2`](#bruno-config-arg1-arg2)
 * [`bruno generate`](#bruno-generate)
 * [`bruno help [COMMAND]`](#bruno-help-command)
@@ -73,6 +74,24 @@ DESCRIPTION
 
 _See code: [src/commands/build.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/build.js)_
 
+## `bruno clean`
+
+Describe the command here
+
+```
+USAGE
+  $ bruno clean
+
+OPTIONS
+  -n, --name=name  name to print
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/clean.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/clean.js)_
+
 ## `bruno config ARG1 ARG2`
 
 Alter configuration of Bruno
@@ -90,7 +109,7 @@ _See code: [src/commands/config.js](https://github.com/justws95/bruno-cli/blob/v
 
 ## `bruno generate`
 
-generates project files based on a schematic
+Generates project files based on a schematic
 
 ```
 USAGE
@@ -118,7 +137,7 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1
 
 ## `bruno init`
 
-initialize a new Bruno project
+Initialize a new Bruno project
 
 ```
 USAGE
@@ -132,18 +151,11 @@ _See code: [src/commands/init.js](https://github.com/justws95/bruno-cli/blob/v0.
 
 ## `bruno track`
 
-Describe the command here
+Add file to Bruno project tracking
 
 ```
 USAGE
   $ bruno track
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
 ```
 
 _See code: [src/commands/track.js](https://github.com/justws95/bruno-cli/blob/v0.0.0/src/commands/track.js)_
