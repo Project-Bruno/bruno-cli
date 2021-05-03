@@ -3,7 +3,7 @@ const {Command, flags} = require('@oclif/command')
 class AuditCommand extends Command {
   async run() {
     const {flags} = this.parse(AuditCommand)
-    const pathname = flags.pathname;
+    var pathname = flags.pathname;
     //this.log(`hello ${name}`)
     const fs = require('fs');
     const yaml = require('js-yaml');
@@ -15,8 +15,7 @@ class AuditCommand extends Command {
     var execStarter;
 
     if (pathname == null) {
-      console.log("usage: bruno audit -p path/to/dependencies/");
-      return;
+      pathname = "./";
     }
 
     let dirname = '../bin';
@@ -48,11 +47,8 @@ class AuditCommand extends Command {
     dependencies = data.projectDependencies;
     console.log('Dependencies found: ' + dependencies);
     depLength = dependencies.length;
-    execStarter = "cd ../src/flawfinder-2.0.15/; ./flawfinder ";
+    execStarter = "./flawfinder ";
     for (var i = 0; i < depLength; i++) {
-      if (pathname.substring(0, 1) != "./") pathname = "./" + pathname;
-      if (pathname.slice(-1) != '/') pathname = pathname + '/';
-      
       var execString = execStarter + pathname + dependencies[i];
       //var execString = execStarter + './test/test-cpp-digit-separator.cpp';
       exec(execString, (error, stdout, stderr) => {
@@ -64,6 +60,7 @@ class AuditCommand extends Command {
 	  console.log('stderr: ' + stderr);
 	}
 	console.log(stdout);
+	if (i != depLength - 1) console.log("-------------------------------------------------------------------------");
       });
     }
   }
