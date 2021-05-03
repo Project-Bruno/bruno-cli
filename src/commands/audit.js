@@ -2,14 +2,21 @@ const {Command, flags} = require('@oclif/command')
 
 class AuditCommand extends Command {
   async run() {
-    //const {flags} = this.parse(AuditCommand)
-    //const name = flags.name || 'world'
+    const {flags} = this.parse(AuditCommand)
+    var pathname = flags.pathname;
     //this.log(`hello ${name}`)
     const fs = require('fs');
     const yaml = require('js-yaml');
+    const { exec } = require("child_process");
     var ymlfiles = new Array();
     var data;
     var dependencies;
+    var depLength;
+    var execStarter;
+
+    if (pathname == null) {
+      pathname = "./";
+    }
 
     let dirname = '../bin';
     console.log("Searching bin for yaml files...");
@@ -32,20 +39,36 @@ class AuditCommand extends Command {
       let fileContents = fs.readFileSync(fullpath, 'utf8');
       data = yaml.safeLoad(fileContents);
 
-      console.log(data);
+      //console.log(data);
     } catch (e) {
       console.log(e);
     }
     
     dependencies = data.projectDependencies;
-    console.log(dependencies);
+    console.log('Dependencies found: ' + dependencies);
+    depLength = dependencies.length;
+    execStarter = "./flawfinder ";
+    for (var i = 0; i < depLength; i++) {
+      var execString = execStarter + pathname + dependencies[i];
+      //var execString = execStarter + './test/test-cpp-digit-separator.cpp';
+      exec(execString, (error, stdout, stderr) => {
+	if (error) {
+	  console.log('error: ' + error.message);
+	  return;
+	}
+	if (stderr) {
+	  console.log('stderr: ' + stderr);
+	}
+	console.log(stdout);
+      });
+    }
   }
 }
 
 AuditCommand.description = `Run vulnerability check on dependencies specified in yml file created by init command.`
 
 AuditCommand.flags = {
-  name: flags.string({char: 'n', description: 'name to print'}),
+  pathname: flags.string({char: 'p', description: 'path to dependencies'}),
 }
 
 module.exports = AuditCommand
